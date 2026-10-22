@@ -1,0 +1,3 @@
+#!/bin/bash
+# Git commit-msg hook (GIT-01). Install once per clone: git config core.hooksPath scripts/git
+exec "$(git rev-parse --show-toplevel)/scripts/git/check-conventions.sh" message "$1"
