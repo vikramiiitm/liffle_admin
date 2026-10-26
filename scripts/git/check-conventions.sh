@@ -32,6 +32,21 @@ case "${1:-}" in
       echo "$HELP" >&2
       exit 1
     fi
+    # A commit that changes how Liffle works says what it means for security, scale, gaps and the
+    # architecture (owner, 26 Oct: "add hooks for scalability, security and gaps, architecture too").
+    # Checked when a commit is made, not over old ranges, so history from before the rule stays valid.
+    if [[ "$subject" =~ ^(feat|fix|refactor|perf)\( ]]; then
+      missing=()
+      for field in Security Scale Gaps Architecture; do
+        grep -v '^#' "$file" | grep -qE "^(- )?\*{0,2}$field:" || missing+=("$field:")
+      done
+      if [ "${#missing[@]}" -gt 0 ]; then
+        echo "A $(echo "$subject" | cut -d'(' -f1) commit needs these lines in its body: ${missing[*]}" >&2
+        echo "Each says what the change means for it, or why it does not touch it (\"Scale: no new per-person work\")." >&2
+        echo "$HELP" >&2
+        exit 1
+      fi
+    fi
     ;;
   range)
     base="${2:?usage: check-conventions.sh range <base> <head>}"; head="${3:?head}"
