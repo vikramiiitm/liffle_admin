@@ -1,0 +1,27 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "for d in \"$CLAUDE_PROJECT_DIR\" \"$CLAUDE_PROJECT_DIR/../liffle_backend\" \"$CLAUDE_PROJECT_DIR/backend\" \"$CLAUDE_PROJECT_DIR/../backend\"; do f=\"$d/scripts/docs-debt.mjs\"; [ -f \"$f\" ] && exec node \"$f\" prompt; done; exit 0",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "for d in \"$CLAUDE_PROJECT_DIR\" \"$CLAUDE_PROJECT_DIR/../liffle_backend\" \"$CLAUDE_PROJECT_DIR/backend\" \"$CLAUDE_PROJECT_DIR/../backend\"; do f=\"$d/scripts/docs-debt.mjs\"; [ -f \"$f\" ] && exec node \"$f\" stop; done; exit 0",
+            "timeout": 30,
+            "statusMessage": "Checking the docs and reviews keep up with the code"
+          }
+        ]
+      }
+    ]
+  }
+}
