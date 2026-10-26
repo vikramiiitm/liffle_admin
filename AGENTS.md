@@ -17,6 +17,6 @@ The staff admin console (ADMIN-01, decision D-082). **Not built yet.** Nothing i
 
 ## How we work
 
-Follow `liffle_backend/docs/WORKING_RULES.md` in every session without being reminded: autonomy, a security check on every slice, verify, commit, push and merge often (branch `claude/dreamy-hawking-b1n9jm` into `main`), docs every step, honesty. Workspace skills live in `instacreate.in/.claude/skills/` (`liffle-dev-loop`, `liffle-security-check`, `liffle-architecture-review`, `liffle-status-report`). The stack is chosen when ADMIN-01 starts and recorded as a decision.
+Follow `liffle_backend/docs/WORKING_RULES.md` in every session without being reminded: autonomy, a security check on every slice, verify, commit, push and merge often (a cloud session works on the branch it is assigned, `claude/<name>`, and merges into `main`, WORKING_RULES §4), docs every step, honesty. Workspace skills live in `instacreate.in/.claude/skills/` (`liffle-dev-loop`, `liffle-security-check`, `liffle-architecture-review`, `liffle-status-report` and the others WORKING_RULES lists). The stack is chosen when ADMIN-01 starts and recorded as a decision.
 
 Keep the shared `docs/FEATURES.md` (what Liffle can do, and how far) and `docs/GAPS.md` (every gap found, fixed or planned) current in the same commit as the work, as `liffle_backend/docs/WORKING_RULES.md` §8 says; `npm run docs:check` in `liffle_backend` fails when FEATURES.md falls behind the progress log.
